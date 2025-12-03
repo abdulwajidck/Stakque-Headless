@@ -32,6 +32,16 @@
     overflow-x: hidden;
   }
 
+  /* Smooth link transitions */
+  a {
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Prevent layout shift on link clicks */
+  a:active {
+    transform: scale(0.98);
+  }
+
   /* Custom animations */
   @keyframes fadeIn {
     from {

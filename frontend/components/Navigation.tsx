@@ -8,7 +8,7 @@ export default function Navigation() {
       <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center group cursor-pointer">
+          <Link href="/" className="flex items-center group cursor-pointer transition-opacity duration-300 ease-in-out hover:opacity-80 active:opacity-70">
             <Image 
               src="/logo.svg" 
               alt="Stakque" 
@@ -22,16 +22,16 @@ export default function Navigation() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            <Link href="/#methodology" className="text-sm text-white/60 hover:text-white transition-colors font-medium">
+            <Link href="/#methodology" className="text-sm text-white/60 hover:text-white active:text-white/80 transition-all duration-300 ease-in-out font-medium">
               The E3 Model
             </Link>
-            <Link href="/solutions" className="text-sm text-white/60 hover:text-white transition-colors font-medium">
+            <Link href="/solutions" className="text-sm text-white/60 hover:text-white active:text-white/80 transition-all duration-300 ease-in-out font-medium">
               Solutions
             </Link>
-            <Link href="/case-studies" className="text-sm text-white/60 hover:text-white transition-colors font-medium">
+            <Link href="/case-studies" className="text-sm text-white/60 hover:text-white active:text-white/80 transition-all duration-300 ease-in-out font-medium">
               Results
             </Link>
-            <Link href="/engagement" className="text-sm text-white/60 hover:text-white transition-colors font-medium">
+            <Link href="/engagement" className="text-sm text-white/60 hover:text-white active:text-white/80 transition-all duration-300 ease-in-out font-medium">
               Engagement
             </Link>
           </div>
@@ -43,7 +43,7 @@ export default function Navigation() {
             </button>
             <Link 
               href="/book-consultation" 
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white text-black hover:bg-[#ffcc33] hover:text-[#520063] text-sm font-semibold rounded-full transition-all duration-200"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white text-black hover:bg-[#ffcc33] hover:text-[#520063] active:scale-95 text-sm font-semibold rounded-full transition-all duration-300 ease-in-out"
             >
               Book Consultation
               <ArrowRight className="w-4 h-4" />

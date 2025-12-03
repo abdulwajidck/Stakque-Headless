@@ -46,22 +46,22 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-6">Methodology</h4>
             <ul className="space-y-4 text-sm text-white/50">
               <li>
-                <Link href="/#methodology" className="hover:text-[#ffcc33] transition-colors">
+                <Link href="/#methodology" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
                   Embedded Teams
                 </Link>
               </li>
               <li>
-                <Link href="/#methodology" className="hover:text-[#ffcc33] transition-colors">
+                <Link href="/#methodology" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
                   Essential Metrics
                 </Link>
               </li>
               <li>
-                <Link href="/#methodology" className="hover:text-[#ffcc33] transition-colors">
+                <Link href="/#methodology" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
                   Engineered Growth
                 </Link>
               </li>
               <li>
-                <Link href="/performance-audit" className="hover:text-[#ffcc33] transition-colors">
+                <Link href="/performance-audit" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
                   Performance Audit
                 </Link>
               </li>
@@ -72,27 +72,27 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-6">Company</h4>
             <ul className="space-y-4 text-sm text-white/50">
               <li>
-                <Link href="/about" className="hover:text-[#ffcc33] transition-colors">
+                <Link href="/about" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
                   About Stakque
                 </Link>
               </li>
               <li>
-                <Link href="/case-studies" className="hover:text-[#ffcc33] transition-colors">
+                <Link href="/case-studies" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
                   Case Studies
                 </Link>
               </li>
               <li>
-                <Link href="/legacy-services" className="hover:text-[#ffcc33] transition-colors">
+                <Link href="/legacy-services" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
                   Legacy Services
                 </Link>
               </li>
               <li>
-                <Link href="/open-positions" className="hover:text-[#ffcc33] transition-colors">
+                <Link href="/open-positions" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
                   Careers
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#ffcc33] transition-colors">
+                <Link href="/contact" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
                   Contact
                 </Link>
               </li>
@@ -103,8 +103,8 @@ export default function Footer() {
         <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-white/30">
           <p>© 2025 Stakque Performance Agency. All rights reserved.</p>
           <div className="flex gap-6 mt-4 sm:mt-0">
-            <Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
-            <Link href="/terms-conditions" className="hover:text-white">Terms of Service</Link>
+            <Link href="/privacy-policy" className="hover:text-white active:text-white/80 transition-all duration-300 ease-in-out">Privacy Policy</Link>
+            <Link href="/terms-conditions" className="hover:text-white active:text-white/80 transition-all duration-300 ease-in-out">Terms of Service</Link>
           </div>
         </div>
       </div>
