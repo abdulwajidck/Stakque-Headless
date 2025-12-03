@@ -61,8 +61,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-emerald-400 transition-colors">
-                  Tech Stack
+                <Link href="/performance-audit" className="hover:text-emerald-400 transition-colors">
+                  Performance Audit
                 </Link>
               </li>
             </ul>

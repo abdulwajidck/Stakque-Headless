@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { TrendingUp, Search, Code2, Zap, ShoppingCart, Users, BarChart3, ArrowRight, Check } from 'lucide-react'
+import { TrendingUp, Search, Code2, Zap, ShoppingCart, Users, ArrowRight, Check } from 'lucide-react'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import BackgroundGradients from '@/components/BackgroundGradients'
@@ -52,14 +52,6 @@ const legacyServices = [
     link: '/organic-social-media',
     color: 'pink',
     features: ['Content Strategy', 'Community Management', 'Social Media Audits', 'Engagement Optimization']
-  },
-  {
-    icon: BarChart3,
-    title: 'Performance Audit',
-    description: 'Comprehensive performance audits that identify opportunities for improvement across your entire marketing stack.',
-    link: '/performance-audit',
-    color: 'yellow',
-    features: ['Marketing Stack Audit', 'Campaign Analysis', 'Technical Review', 'ROI Assessment']
   }
 ]
 
@@ -101,8 +93,7 @@ export default function LegacyServicesPage() {
                 purple: 'bg-purple-900/20 border-purple-500/20 text-purple-400',
                 orange: 'bg-orange-900/20 border-orange-500/20 text-orange-400',
                 cyan: 'bg-cyan-900/20 border-cyan-500/20 text-cyan-400',
-                pink: 'bg-pink-900/20 border-pink-500/20 text-pink-400',
-                yellow: 'bg-yellow-900/20 border-yellow-500/20 text-yellow-400'
+                pink: 'bg-pink-900/20 border-pink-500/20 text-pink-400'
               }
               
               return (
@@ -167,6 +158,6 @@ export default function LegacyServicesPage() {
 
 export const metadata = {
   title: 'Legacy Services | Standalone Marketing Services | Stakque',
-  description: 'Explore our standalone marketing services including Performance Marketing, SEO, Web Design, Marketing Automation, E-commerce Growth, Social Media, and Performance Audits.',
+  description: 'Explore our standalone marketing services including Performance Marketing, SEO, Web Design, Marketing Automation, E-commerce Growth, and Social Media.',
 }
 
