@@ -16,6 +16,7 @@ export default function Navigation() {
               height={32} 
               className="h-8 w-auto"
               priority
+              fetchPriority="high"
             />
           </Link>
 

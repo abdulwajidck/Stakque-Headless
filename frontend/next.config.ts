@@ -26,6 +26,12 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Optimize CSS loading
+  experimental: {
+    optimizeCss: true,
+  },
+  // Compress output
+  compress: true,
 };
 
 export default nextConfig;
