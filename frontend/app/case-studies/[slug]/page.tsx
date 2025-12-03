@@ -8,10 +8,16 @@ import Footer from '@/components/Footer'
 import BackgroundGradients from '@/components/BackgroundGradients'
 
 export async function generateStaticParams() {
-  const caseStudies = await getCaseStudies()
-  return caseStudies.map((caseStudy) => ({
-    slug: caseStudy.attributes.slug,
-  }))
+  try {
+    const caseStudies = await getCaseStudies()
+    return caseStudies.map((caseStudy) => ({
+      slug: caseStudy.attributes.slug,
+    }))
+  } catch (error) {
+    // Return empty array if no case studies available (e.g., during build without Strapi)
+    console.warn('No case studies available for static generation:', error)
+    return []
+  }
 }
 
 export default async function CaseStudyPage({ params }: { params: { slug: string } }) {

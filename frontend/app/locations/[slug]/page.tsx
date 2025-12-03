@@ -7,10 +7,16 @@ import Footer from '@/components/Footer'
 import BackgroundGradients from '@/components/BackgroundGradients'
 
 export async function generateStaticParams() {
-  const locations = await getLocations()
-  return locations.map((location) => ({
-    slug: location.attributes.slug,
-  }))
+  try {
+    const locations = await getLocations()
+    return locations.map((location) => ({
+      slug: location.attributes.slug,
+    }))
+  } catch (error) {
+    // Return empty array if no locations available (e.g., during build without Strapi)
+    console.warn('No locations available for static generation:', error)
+    return []
+  }
 }
 
 export default async function LocationPage({ params }: { params: { slug: string } }) {

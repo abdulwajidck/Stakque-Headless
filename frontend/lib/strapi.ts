@@ -95,32 +95,49 @@ export interface Location {
 }
 
 export async function fetchAPI<T>(path: string, options: RequestInit = {}): Promise<StrapiResponse<T>> {
-  const response = await fetch(`${STRAPI_URL}/api${path}`, {
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-    },
-    ...options,
-    next: { revalidate: 60 }, // Revalidate every 60 seconds
-  })
+  try {
+    const response = await fetch(`${STRAPI_URL}/api${path}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        ...options.headers,
+      },
+      ...options,
+      next: { revalidate: 60 }, // Revalidate every 60 seconds
+    })
 
-  if (!response.ok) {
-    throw new Error(`API error: ${response.statusText}`)
+    if (!response.ok) {
+      throw new Error(`API error: ${response.statusText}`)
+    }
+
+    const data = await response.json()
+    return data
+  } catch (error) {
+    // If connection fails (e.g., during build when Strapi is not available), throw to be handled by caller
+    throw error
   }
-
-  const data = await response.json()
-  return data
 }
 
 // Blog Posts
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  const data = await fetchAPI<BlogPost[]>('/blog-posts?populate=*&sort=publishedAt:desc')
-  return data.data || []
+  try {
+    const data = await fetchAPI<BlogPost[]>('/blog-posts?populate=*&sort=publishedAt:desc')
+    return data.data || []
+  } catch (error) {
+    // Return empty array if Strapi is not available (e.g., during build)
+    console.warn('Failed to fetch blog posts from Strapi, returning empty array:', error)
+    return []
+  }
 }
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
-  const data = await fetchAPI<BlogPost[]>(`/blog-posts?filters[slug][$eq]=${slug}&populate=*`)
-  return data.data?.[0] || null
+  try {
+    const data = await fetchAPI<BlogPost[]>(`/blog-posts?filters[slug][$eq]=${slug}&populate=*`)
+    return data.data?.[0] || null
+  } catch (error) {
+    // Return null if Strapi is not available
+    console.warn(`Failed to fetch blog post "${slug}" from Strapi:`, error)
+    return null
+  }
 }
 
 // Case Studies
@@ -148,12 +165,24 @@ export async function getCaseStudy(slug: string): Promise<CaseStudy | null> {
 
 // Locations
 export async function getLocations(): Promise<Location[]> {
-  const data = await fetchAPI<Location[]>('/locations?populate=*')
-  return data.data || []
+  try {
+    const data = await fetchAPI<Location[]>('/locations?populate=*')
+    return data.data || []
+  } catch (error) {
+    // Return empty array if Strapi is not available (e.g., during build)
+    console.warn('Failed to fetch locations from Strapi, returning empty array:', error)
+    return []
+  }
 }
 
 export async function getLocation(slug: string): Promise<Location | null> {
-  const data = await fetchAPI<Location[]>(`/locations?filters[slug][$eq]=${slug}&populate=*`)
-  return data.data?.[0] || null
+  try {
+    const data = await fetchAPI<Location[]>(`/locations?filters[slug][$eq]=${slug}&populate=*`)
+    return data.data?.[0] || null
+  } catch (error) {
+    // Return null if Strapi is not available
+    console.warn(`Failed to fetch location "${slug}" from Strapi:`, error)
+    return null
+  }
 }
 

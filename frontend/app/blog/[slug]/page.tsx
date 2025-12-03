@@ -8,10 +8,16 @@ import Footer from '@/components/Footer'
 import BackgroundGradients from '@/components/BackgroundGradients'
 
 export async function generateStaticParams() {
-  const posts = await getBlogPosts()
-  return posts.map((post) => ({
-    slug: post.attributes.slug,
-  }))
+  try {
+    const posts = await getBlogPosts()
+    return posts.map((post) => ({
+      slug: post.attributes.slug,
+    }))
+  } catch (error) {
+    // Return empty array if no posts available (e.g., during build without Strapi)
+    console.warn('No blog posts available for static generation:', error)
+    return []
+  }
 }
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
