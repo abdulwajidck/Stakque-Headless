@@ -62,10 +62,10 @@
     }
   }
 
-  /* Selection styling */
+  /* Selection styling - using brand colors */
   ::selection {
-    background-color: rgba(16, 185, 129, 0.3);
-    color: rgb(209, 250, 229);
+    background-color: rgba(82, 0, 99, 0.3); /* #520063 with opacity */
+    color: #ffcc33; /* Brand yellow */
   }
 }
 

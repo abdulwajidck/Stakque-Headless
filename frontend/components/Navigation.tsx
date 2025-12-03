@@ -43,7 +43,7 @@ export default function Navigation() {
             </button>
             <Link 
               href="/book-consultation" 
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white text-black hover:bg-white/90 text-sm font-semibold rounded-full transition-all duration-200"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white text-black hover:bg-[#ffcc33] hover:text-[#520063] text-sm font-semibold rounded-full transition-all duration-200"
             >
               Book Consultation
               <ArrowRight className="w-4 h-4" />

@@ -46,22 +46,22 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-6">Methodology</h4>
             <ul className="space-y-4 text-sm text-white/50">
               <li>
-                <Link href="/#methodology" className="hover:text-emerald-400 transition-colors">
+                <Link href="/#methodology" className="hover:text-[#ffcc33] transition-colors">
                   Embedded Teams
                 </Link>
               </li>
               <li>
-                <Link href="/#methodology" className="hover:text-emerald-400 transition-colors">
+                <Link href="/#methodology" className="hover:text-[#ffcc33] transition-colors">
                   Essential Metrics
                 </Link>
               </li>
               <li>
-                <Link href="/#methodology" className="hover:text-emerald-400 transition-colors">
+                <Link href="/#methodology" className="hover:text-[#ffcc33] transition-colors">
                   Engineered Growth
                 </Link>
               </li>
               <li>
-                <Link href="/performance-audit" className="hover:text-emerald-400 transition-colors">
+                <Link href="/performance-audit" className="hover:text-[#ffcc33] transition-colors">
                   Performance Audit
                 </Link>
               </li>
@@ -72,27 +72,27 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-6">Company</h4>
             <ul className="space-y-4 text-sm text-white/50">
               <li>
-                <Link href="/about" className="hover:text-emerald-400 transition-colors">
+                <Link href="/about" className="hover:text-[#ffcc33] transition-colors">
                   About Stakque
                 </Link>
               </li>
               <li>
-                <Link href="/case-studies" className="hover:text-emerald-400 transition-colors">
+                <Link href="/case-studies" className="hover:text-[#ffcc33] transition-colors">
                   Case Studies
                 </Link>
               </li>
               <li>
-                <Link href="/legacy-services" className="hover:text-emerald-400 transition-colors">
+                <Link href="/legacy-services" className="hover:text-[#ffcc33] transition-colors">
                   Legacy Services
                 </Link>
               </li>
               <li>
-                <Link href="/open-positions" className="hover:text-emerald-400 transition-colors">
+                <Link href="/open-positions" className="hover:text-[#ffcc33] transition-colors">
                   Careers
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-emerald-400 transition-colors">
+                <Link href="/contact" className="hover:text-[#ffcc33] transition-colors">
                   Contact
                 </Link>
               </li>
@@ -101,7 +101,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-white/30">
-          <p>© 2024 Stakque Performance Agency. All rights reserved.</p>
+          <p>© 2025 Stakque Performance Agency. All rights reserved.</p>
           <div className="flex gap-6 mt-4 sm:mt-0">
             <Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
             <Link href="/terms-conditions" className="hover:text-white">Terms of Service</Link>

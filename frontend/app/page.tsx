@@ -185,7 +185,7 @@ export default function HomePage() {
               </div>
 
               <h1 className="text-5xl lg:text-7xl font-manrope font-semibold tracking-tight text-white mb-6 leading-[1.1]">
-                The <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500">E3 Model</span> for <br />
+                The <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffcc33] to-[#520063]">E3 Model</span> for <br />
                 Scalable Growth.
           </h1>
 
@@ -230,7 +230,7 @@ export default function HomePage() {
                 <div className="flex items-center justify-between mb-8">
                   <div>
                     <h3 className="text-white font-semibold font-manrope">Performance Overview</h3>
-                    <p className="text-xs text-white/40 mt-1 font-mono">LIVE DATA STREAM • Q3 2024</p>
+                    <p className="text-xs text-white/40 mt-1 font-mono">LIVE DATA STREAM • Q1 2025</p>
                   </div>
                   <div className="flex gap-2">
                     <span className="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs text-white/60">ROAS Focus</span>
@@ -512,7 +512,7 @@ export default function HomePage() {
 
             <div className="relative rounded-3xl bg-[#0F0F0F] border border-emerald-500/30 p-8 shadow-2xl shadow-emerald-900/10 scale-105 z-10">
               <div className="absolute inset-0 bg-emerald-500/5 rounded-3xl pointer-events-none"></div>
-              <div className="absolute top-0 right-0 left-0 h-1 bg-gradient-to-r from-emerald-400 to-blue-500 rounded-t-3xl"></div>
+              <div className="absolute top-0 right-0 left-0 h-1 bg-gradient-to-r from-[#ffcc33] to-[#520063] rounded-t-3xl"></div>
               
               <div className="mb-8 relative">
                 <span className="inline-block px-3 py-1 rounded-full bg-emerald-500/20 text-xs text-emerald-400 mb-4 border border-emerald-500/20">Most Common</span>

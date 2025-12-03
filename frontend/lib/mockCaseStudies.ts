@@ -58,7 +58,7 @@ export const mockCaseStudies = [
           role: 'CMO, FinTech Scale-up'
         }
       },
-      publishedAt: '2024-01-15T00:00:00.000Z'
+      publishedAt: '2025-01-15T00:00:00.000Z'
     }
   },
   {
@@ -119,7 +119,7 @@ export const mockCaseStudies = [
           role: 'VP of Marketing, Premium E-commerce Brand'
         }
       },
-      publishedAt: '2024-02-20T00:00:00.000Z'
+      publishedAt: '2025-02-20T00:00:00.000Z'
     }
   },
   {
@@ -180,7 +180,7 @@ export const mockCaseStudies = [
           role: 'CEO & Co-founder, B2B SaaS Startup'
         }
       },
-      publishedAt: '2024-03-10T00:00:00.000Z'
+      publishedAt: '2025-03-10T00:00:00.000Z'
     }
   }
 ]
