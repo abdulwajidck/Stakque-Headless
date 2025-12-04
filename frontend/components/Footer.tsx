@@ -77,8 +77,18 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/manifesto" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
+                  Our Manifesto
+                </Link>
+              </li>
+              <li>
                 <Link href="/case-studies" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
                   Case Studies
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
+                  Blog
                 </Link>
               </li>
               <li>

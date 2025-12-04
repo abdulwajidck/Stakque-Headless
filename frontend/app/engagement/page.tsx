@@ -54,7 +54,7 @@ export default function EngagementPage() {
                 </li>
               </ul>
 
-              <Link href="/contact" className="block w-full py-3 rounded-xl border border-white/10 text-white text-sm font-medium hover:bg-white hover:text-black transition-all text-center">
+              <Link href="/book-consultation" className="block w-full py-3 rounded-xl border border-white/10 text-white text-sm font-medium hover:bg-white hover:text-black transition-all text-center">
                 Book Audit
               </Link>
             </div>
@@ -88,7 +88,7 @@ export default function EngagementPage() {
                 </li>
               </ul>
 
-              <Link href="/contact" className="block w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-white text-sm font-semibold hover:brightness-110 transition-all shadow-lg shadow-emerald-500/25 relative text-center">
+              <Link href="/book-consultation" className="block w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-white text-sm font-semibold hover:brightness-110 transition-all shadow-lg shadow-emerald-500/25 relative text-center">
                 Apply for Partnership
               </Link>
             </div>
@@ -172,7 +172,7 @@ export default function EngagementPage() {
             Let's discuss which engagement model aligns with your growth goals.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-black font-semibold rounded-full transition-all duration-200 hover:bg-gray-100">
+            <Link href="/book-consultation" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-black font-semibold rounded-full transition-all duration-200 hover:bg-gray-100">
               Schedule a Call
               <ArrowRight className="w-4 h-4" />
             </Link>

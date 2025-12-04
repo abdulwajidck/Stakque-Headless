@@ -31,6 +31,9 @@ export default function Navigation() {
             <Link href="/case-studies" className="text-sm text-white/60 hover:text-white active:text-white/80 transition-all duration-300 ease-in-out font-medium">
               Results
             </Link>
+            <Link href="/blog" className="text-sm text-white/60 hover:text-white active:text-white/80 transition-all duration-300 ease-in-out font-medium">
+              Blog
+            </Link>
             <Link href="/engagement" className="text-sm text-white/60 hover:text-white active:text-white/80 transition-all duration-300 ease-in-out font-medium">
               Engagement
             </Link>

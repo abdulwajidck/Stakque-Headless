@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ChevronDown, CheckCircle2, TrendingUp, ArrowDownRight, Zap, Users, Merge, Target, Focus, Cpu, Code2, Check, Search, Database, FileText, Server, Globe, ShieldCheck, Quote } from 'lucide-react'
+import { ChevronDown, CheckCircle2, TrendingUp, ArrowDownRight, Zap, Users, Merge, Target, Focus, Cpu, Code2, Check, Search, Database, FileText, Server, Globe, ShieldCheck, Quote, ArrowRight } from 'lucide-react'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import BackgroundGradients from '@/components/BackgroundGradients'
@@ -479,7 +479,10 @@ export default function HomePage() {
           <div className="text-center max-w-2xl mx-auto mb-20">
             <span className="text-emerald-400 font-mono text-sm tracking-widest uppercase mb-4 block">Partnership Tiers</span>
             <h2 className="text-4xl lg:text-5xl font-manrope font-semibold text-white mb-6">Engagement Models</h2>
-            <p className="text-white/60">We structure our partnerships to align incentives. We grow when you grow.</p>
+            <p className="text-white/60 mb-4">We structure our partnerships to align incentives. We grow when you grow.</p>
+            <Link href="/engagement" className="inline-flex items-center gap-2 text-sm text-emerald-400 hover:text-emerald-300 font-medium transition-colors">
+              View All Engagement Models <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
@@ -505,7 +508,7 @@ export default function HomePage() {
                 </li>
               </ul>
 
-              <Link href="/contact" className="block w-full py-3 rounded-xl border border-white/10 text-white text-sm font-medium hover:bg-white hover:text-black transition-all text-center">
+              <Link href="/book-consultation" className="block w-full py-3 rounded-xl border border-white/10 text-white text-sm font-medium hover:bg-white hover:text-black transition-all text-center">
                 Book Audit
               </Link>
             </div>
@@ -539,7 +542,7 @@ export default function HomePage() {
                 </li>
               </ul>
 
-              <Link href="/contact" className="block w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-white text-sm font-semibold hover:brightness-110 transition-all shadow-lg shadow-emerald-500/25 relative text-center">
+              <Link href="/book-consultation" className="block w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-white text-sm font-semibold hover:brightness-110 transition-all shadow-lg shadow-emerald-500/25 relative text-center">
                 Apply for Partnership
               </Link>
             </div>
@@ -566,7 +569,7 @@ export default function HomePage() {
                 </li>
               </ul>
 
-              <Link href="/contact" className="block w-full py-3 rounded-xl border border-white/10 text-white text-sm font-medium hover:bg-white hover:text-black transition-all text-center">
+              <Link href="/book-consultation" className="block w-full py-3 rounded-xl border border-white/10 text-white text-sm font-medium hover:bg-white hover:text-black transition-all text-center">
                 Contact Sales
               </Link>
             </div>
