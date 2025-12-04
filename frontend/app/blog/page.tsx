@@ -24,7 +24,7 @@ export default async function BlogPage() {
             </div>
 
             <h1 className="text-5xl lg:text-7xl font-manrope font-semibold tracking-tight text-white mb-8 leading-[1.1]">
-              The <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500">Stakque</span> Blog
+              The <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffcc33] to-[#520063]">Stakque</span> Blog
             </h1>
 
             <p className="text-lg lg:text-xl text-white/60 mb-12 leading-relaxed max-w-2xl mx-auto font-light">
@@ -66,7 +66,7 @@ export default async function BlogPage() {
                       {new Date(post.attributes.publishedAt).toLocaleDateString()}
                     </span>
                   </div>
-                  <h3 className="text-xl font-manrope font-semibold text-white mb-3 group-hover:text-emerald-400 transition-colors">
+                  <h3 className="text-xl font-manrope font-semibold text-white mb-3 group-hover:text-[#ffcc33] transition-colors">
                     {post.attributes.title}
                   </h3>
                   {post.attributes.excerpt && (
@@ -74,7 +74,7 @@ export default async function BlogPage() {
                       {post.attributes.excerpt}
                     </p>
                   )}
-                  <div className="flex items-center gap-2 text-sm text-emerald-400 font-medium">
+                  <div className="flex items-center gap-2 text-sm text-[#ffcc33] font-medium">
                     Read More
                     <ArrowRight className="w-4 h-4" />
                   </div>
