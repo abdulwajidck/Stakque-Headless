@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import BackgroundGradients from '@/components/BackgroundGradients'
+import { formatDateShort } from '@/lib/formatDate'
 
 export default async function BlogPage({
   searchParams,
@@ -80,7 +81,7 @@ export default async function BlogPage({
                         </span>
                       )}
                       <span className="text-xs text-white/40 font-mono">
-                        {new Date(post.attributes.publishedAt).toLocaleDateString()}
+                        {formatDateShort(post.attributes.publishedAt)}
                       </span>
                     </div>
                     <h3 className="text-xl font-manrope font-semibold text-white mb-3 group-hover:text-[#ffcc33] transition-colors">

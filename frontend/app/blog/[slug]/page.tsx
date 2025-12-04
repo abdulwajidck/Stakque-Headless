@@ -6,6 +6,8 @@ import { ArrowLeft } from 'lucide-react'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import BackgroundGradients from '@/components/BackgroundGradients'
+import { formatDate } from '@/lib/formatDate'
+import { cleanHtmlContent } from '@/lib/cleanHtml'
 
 export async function generateStaticParams() {
   try {
@@ -55,11 +57,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </span>
             )}
             <span className="text-sm text-white/40 font-mono">
-              {new Date(publishedAt).toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-              })}
+              {formatDate(publishedAt)}
             </span>
           </div>
 
@@ -86,7 +84,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {content && (
             <div 
               className="blog-content prose prose-invert max-w-none text-white/70 leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: content }}
+              dangerouslySetInnerHTML={{ __html: cleanHtmlContent(content) }}
             />
           )}
         </div>
