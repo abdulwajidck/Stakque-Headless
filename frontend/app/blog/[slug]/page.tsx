@@ -83,15 +83,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           )}
 
           {/* Article Content */}
-          <div 
-            className="prose prose-invert max-w-none text-white/70 leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: content }}
-            style={{
-              '--tw-prose-headings': '#ffffff',
-              '--tw-prose-links': '#10b981',
-              '--tw-prose-bold': '#ffffff',
-            } as React.CSSProperties}
-          />
+          {content && (
+            <div 
+              className="prose prose-invert max-w-none text-white/70 leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: content }}
+              style={{
+                '--tw-prose-headings': '#ffffff',
+                '--tw-prose-links': '#10b981',
+                '--tw-prose-bold': '#ffffff',
+              } as React.CSSProperties}
+            />
+          )}
         </div>
       </section>
 
