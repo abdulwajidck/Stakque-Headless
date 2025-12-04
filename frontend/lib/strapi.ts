@@ -119,6 +119,7 @@ export async function fetchAPI<T>(path: string, options: RequestInit = {}): Prom
 
 // Blog Posts
 import { mockBlogPosts } from './mockBlogPosts'
+import { cleanHtmlContent } from './cleanHtml'
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
   try {
@@ -133,8 +134,8 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
         title: post.title,
         slug: post.slug,
         excerpt: post.excerpt,
-        content: post.content,
-        category: post.category,
+        content: cleanHtmlContent(post.content), // Clean HTML content
+        category: post.category?.replace(/&amp;/g, '&') || undefined, // Clean HTML entities in category
         publishedAt: post.publishedAt,
       }
     }))
@@ -156,8 +157,8 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
           title: mock.title,
           slug: mock.slug,
           excerpt: mock.excerpt,
-          content: mock.content,
-          category: mock.category,
+          content: cleanHtmlContent(mock.content), // Clean HTML content
+          category: mock.category?.replace(/&amp;/g, '&') || undefined, // Clean HTML entities in category
           publishedAt: mock.publishedAt,
         }
       }

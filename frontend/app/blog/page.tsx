@@ -1,13 +1,41 @@
 import { getBlogPosts } from '@/lib/strapi'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Filter, X } from 'lucide-react'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import BackgroundGradients from '@/components/BackgroundGradients'
+import BlogFilters from '@/components/BlogFilters'
 
-export default async function BlogPage() {
-  const posts = await getBlogPosts()
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string; page?: string }>
+}) {
+  const params = await searchParams
+  const allPosts = await getBlogPosts()
+  
+  // Get unique categories
+  const categories = Array.from(
+    new Set(
+      allPosts
+        .map((post) => post.attributes.category)
+        .filter((cat): cat is string => Boolean(cat))
+    )
+  ).sort()
+
+  // Filter by category if provided
+  const filteredPosts = params.category
+    ? allPosts.filter((post) => post.attributes.category === params.category)
+    : allPosts
+
+  // Pagination
+  const currentPage = parseInt(params.page || '1', 10)
+  const postsPerPage = 12
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage)
+  const startIndex = (currentPage - 1) * postsPerPage
+  const endIndex = startIndex + postsPerPage
+  const paginatedPosts = filteredPosts.slice(startIndex, endIndex)
 
   return (
     <div className="min-h-screen antialiased bg-[#050505] text-white font-inter selection:bg-emerald-500/30 selection:text-emerald-200 overflow-x-hidden">
@@ -34,60 +62,144 @@ export default async function BlogPage() {
         </div>
       </section>
 
-      {/* Blog Posts Grid */}
-      <section className="relative z-10 pb-32">
+      {/* Filters Section */}
+      <section className="relative z-10 pb-8">
         <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
-          {posts.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {posts.map((post) => (
-                <Link
-                  key={post.id}
-                  href={`/blog/${post.attributes.slug}`}
-                  className="glass-panel rounded-3xl p-8 group hover:-translate-y-1 transition-transform duration-300 block"
-                >
-                  {post.attributes.featuredImage && (
-                    <div className="w-full h-48 rounded-xl bg-gradient-to-br from-emerald-500/10 to-blue-500/10 flex items-center justify-center mb-6 overflow-hidden">
-                      <Image
-                        src={post.attributes.featuredImage.data.attributes.url}
-                        alt={post.attributes.title}
-                        width={400}
-                        height={200}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  )}
-                  <div className="flex items-center gap-3 mb-4">
-                    {post.attributes.category && (
-                      <span className="px-2 py-1 rounded-full bg-emerald-500/20 text-xs text-emerald-400 border border-emerald-500/20">
-                        {post.attributes.category}
-                      </span>
+          <BlogFilters categories={categories} currentCategory={params.category} />
+        </div>
+      </section>
+
+      {/* Blog Posts Grid */}
+      <section className="relative z-10 pb-16">
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
+          {paginatedPosts.length > 0 ? (
+            <>
+              <div className="mb-8 text-sm text-white/50">
+                Showing {startIndex + 1}-{Math.min(endIndex, filteredPosts.length)} of {filteredPosts.length} posts
+                {params.category && (
+                  <span className="ml-2">
+                    in <span className="text-[#ffcc33] font-medium">{params.category}</span>
+                  </span>
+                )}
+              </div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {paginatedPosts.map((post) => (
+                  <Link
+                    key={post.id}
+                    href={`/blog/${post.attributes.slug}`}
+                    className="glass-panel rounded-3xl p-8 group hover:-translate-y-1 transition-all duration-300 block"
+                  >
+                    {post.attributes.featuredImage && (
+                      <div className="w-full h-48 rounded-xl bg-gradient-to-br from-emerald-500/10 to-blue-500/10 flex items-center justify-center mb-6 overflow-hidden">
+                        <Image
+                          src={post.attributes.featuredImage.data.attributes.url}
+                          alt={post.attributes.title}
+                          width={400}
+                          height={200}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
                     )}
-                    <span className="text-xs text-white/40 font-mono">
-                      {new Date(post.attributes.publishedAt).toLocaleDateString()}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-manrope font-semibold text-white mb-3 group-hover:text-[#ffcc33] transition-colors">
-                    {post.attributes.title}
-                  </h3>
-                  {post.attributes.excerpt && (
-                    <p className="text-white/60 text-sm leading-relaxed mb-4">
-                      {post.attributes.excerpt}
-                    </p>
-                  )}
-                  <div className="flex items-center gap-2 text-sm text-[#ffcc33] font-medium">
-                    Read More
-                    <ArrowRight className="w-4 h-4" />
-                  </div>
-                </Link>
-              ))}
-            </div>
+                    <div className="flex items-center gap-3 mb-4">
+                      {post.attributes.category && (
+                        <span className="px-2 py-1 rounded-full bg-emerald-500/20 text-xs text-emerald-400 border border-emerald-500/20">
+                          {post.attributes.category}
+                        </span>
+                      )}
+                      <span className="text-xs text-white/40 font-mono">
+                        {new Date(post.attributes.publishedAt).toLocaleDateString()}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-manrope font-semibold text-white mb-3 group-hover:text-[#ffcc33] transition-colors">
+                      {post.attributes.title}
+                    </h3>
+                    {post.attributes.excerpt && (
+                      <p className="text-white/60 text-sm leading-relaxed mb-4 line-clamp-3">
+                        {post.attributes.excerpt}
+                      </p>
+                    )}
+                    <div className="flex items-center gap-2 text-sm text-[#ffcc33] font-medium">
+                      Read More
+                      <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </>
           ) : (
             <div className="text-center py-20">
-              <p className="text-white/60">No blog posts yet. Check back soon!</p>
+              <p className="text-white/60 mb-4">No blog posts found.</p>
+              {params.category && (
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center gap-2 text-sm text-[#ffcc33] hover:text-[#ffcc33]/80 transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                  Clear filter
+                </Link>
+              )}
             </div>
           )}
         </div>
       </section>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <section className="relative z-10 pb-32">
+          <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
+            <div className="flex items-center justify-center gap-2">
+              {currentPage > 1 && (
+                <Link
+                  href={`/blog${params.category ? `?category=${encodeURIComponent(params.category)}&` : '?'}page=${currentPage - 1}`}
+                  className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white/60 hover:text-white hover:border-white/20 transition-all duration-300"
+                >
+                  Previous
+                </Link>
+              )}
+              
+              <div className="flex items-center gap-2">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+                  if (
+                    page === 1 ||
+                    page === totalPages ||
+                    (page >= currentPage - 1 && page <= currentPage + 1)
+                  ) {
+                    return (
+                      <Link
+                        key={page}
+                        href={`/blog${params.category ? `?category=${encodeURIComponent(params.category)}&` : '?'}page=${page}`}
+                        className={`px-4 py-2 rounded-lg border transition-all duration-300 ${
+                          page === currentPage
+                            ? 'bg-[#ffcc33] text-[#520063] border-[#ffcc33] font-semibold'
+                            : 'bg-white/5 border-white/10 text-white/60 hover:text-white hover:border-white/20'
+                        }`}
+                      >
+                        {page}
+                      </Link>
+                    )
+                  } else if (page === currentPage - 2 || page === currentPage + 2) {
+                    return (
+                      <span key={page} className="px-2 text-white/40">
+                        ...
+                      </span>
+                    )
+                  }
+                  return null
+                })}
+              </div>
+
+              {currentPage < totalPages && (
+                <Link
+                  href={`/blog${params.category ? `?category=${encodeURIComponent(params.category)}&` : '?'}page=${currentPage + 1}`}
+                  className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white/60 hover:text-white hover:border-white/20 transition-all duration-300"
+                >
+                  Next
+                </Link>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       <Footer />
     </div>
@@ -98,4 +210,3 @@ export const metadata = {
   title: 'Blog | Stakque Performance Agency',
   description: 'Deep dives into performance marketing, engineering growth, and the science behind scalable acquisition.',
 }
-
