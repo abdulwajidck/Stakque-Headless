@@ -1,41 +1,26 @@
 import { getBlogPosts } from '@/lib/strapi'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Filter, X } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import BackgroundGradients from '@/components/BackgroundGradients'
-import BlogFilters from '@/components/BlogFilters'
 
 export default async function BlogPage({
   searchParams,
 }: {
-  searchParams: Promise<{ category?: string; page?: string }>
+  searchParams: Promise<{ page?: string }>
 }) {
   const params = await searchParams
   const allPosts = await getBlogPosts()
-  
-  // Get unique categories
-  const categories = Array.from(
-    new Set(
-      allPosts
-        .map((post) => post.attributes.category)
-        .filter((cat): cat is string => Boolean(cat))
-    )
-  ).sort()
-
-  // Filter by category if provided
-  const filteredPosts = params.category
-    ? allPosts.filter((post) => post.attributes.category === params.category)
-    : allPosts
 
   // Pagination
   const currentPage = parseInt(params.page || '1', 10)
   const postsPerPage = 12
-  const totalPages = Math.ceil(filteredPosts.length / postsPerPage)
+  const totalPages = Math.ceil(allPosts.length / postsPerPage)
   const startIndex = (currentPage - 1) * postsPerPage
   const endIndex = startIndex + postsPerPage
-  const paginatedPosts = filteredPosts.slice(startIndex, endIndex)
+  const paginatedPosts = allPosts.slice(startIndex, endIndex)
 
   return (
     <div className="min-h-screen antialiased bg-[#050505] text-white font-inter selection:bg-emerald-500/30 selection:text-emerald-200 overflow-x-hidden">
@@ -62,25 +47,13 @@ export default async function BlogPage({
         </div>
       </section>
 
-      {/* Filters Section */}
-      <section className="relative z-10 pb-8">
-        <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
-          <BlogFilters categories={categories} currentCategory={params.category} />
-        </div>
-      </section>
-
       {/* Blog Posts Grid */}
       <section className="relative z-10 pb-16">
         <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
           {paginatedPosts.length > 0 ? (
             <>
               <div className="mb-8 text-sm text-white/50">
-                Showing {startIndex + 1}-{Math.min(endIndex, filteredPosts.length)} of {filteredPosts.length} posts
-                {params.category && (
-                  <span className="ml-2">
-                    in <span className="text-[#ffcc33] font-medium">{params.category}</span>
-                  </span>
-                )}
+                Showing {startIndex + 1}-{Math.min(endIndex, allPosts.length)} of {allPosts.length} posts
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {paginatedPosts.map((post) => (
@@ -128,16 +101,7 @@ export default async function BlogPage({
             </>
           ) : (
             <div className="text-center py-20">
-              <p className="text-white/60 mb-4">No blog posts found.</p>
-              {params.category && (
-                <Link
-                  href="/blog"
-                  className="inline-flex items-center gap-2 text-sm text-[#ffcc33] hover:text-[#ffcc33]/80 transition-colors"
-                >
-                  <X className="w-4 h-4" />
-                  Clear filter
-                </Link>
-              )}
+              <p className="text-white/60">No blog posts yet. Check back soon!</p>
             </div>
           )}
         </div>
@@ -150,7 +114,7 @@ export default async function BlogPage({
             <div className="flex items-center justify-center gap-2">
               {currentPage > 1 && (
                 <Link
-                  href={`/blog${params.category ? `?category=${encodeURIComponent(params.category)}&` : '?'}page=${currentPage - 1}`}
+                  href={`/blog?page=${currentPage - 1}`}
                   className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white/60 hover:text-white hover:border-white/20 transition-all duration-300"
                 >
                   Previous
@@ -167,7 +131,7 @@ export default async function BlogPage({
                     return (
                       <Link
                         key={page}
-                        href={`/blog${params.category ? `?category=${encodeURIComponent(params.category)}&` : '?'}page=${page}`}
+                        href={`/blog?page=${page}`}
                         className={`px-4 py-2 rounded-lg border transition-all duration-300 ${
                           page === currentPage
                             ? 'bg-[#ffcc33] text-[#520063] border-[#ffcc33] font-semibold'
@@ -190,7 +154,7 @@ export default async function BlogPage({
 
               {currentPage < totalPages && (
                 <Link
-                  href={`/blog${params.category ? `?category=${encodeURIComponent(params.category)}&` : '?'}page=${currentPage + 1}`}
+                  href={`/blog?page=${currentPage + 1}`}
                   className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white/60 hover:text-white hover:border-white/20 transition-all duration-300"
                 >
                   Next
