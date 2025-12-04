@@ -115,7 +115,7 @@ export default function EngagementPage() {
                 </li>
               </ul>
 
-              <Link href="/contact" className="block w-full py-3 rounded-xl border border-white/10 text-white text-sm font-medium hover:bg-white hover:text-black transition-all text-center">
+              <Link href="/book-consultation" className="block w-full py-3 rounded-xl border border-white/10 text-white text-sm font-medium hover:bg-white hover:text-black transition-all text-center">
                 Contact Sales
               </Link>
             </div>
