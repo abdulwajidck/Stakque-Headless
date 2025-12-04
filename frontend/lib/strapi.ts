@@ -118,14 +118,26 @@ export async function fetchAPI<T>(path: string, options: RequestInit = {}): Prom
 }
 
 // Blog Posts
+import { mockBlogPosts } from './mockBlogPosts'
+
 export async function getBlogPosts(): Promise<BlogPost[]> {
   try {
     const data = await fetchAPI<BlogPost[]>('/blog-posts?populate=*&sort=publishedAt:desc')
     return data.data || []
   } catch (error) {
-    // Return empty array if Strapi is not available (e.g., during build)
-    console.warn('Failed to fetch blog posts from Strapi, returning empty array:', error)
-    return []
+    // Fallback to mock data if Strapi is not available
+    console.warn('Failed to fetch blog posts from Strapi, using mock data:', error)
+    return mockBlogPosts.map(post => ({
+      id: post.id,
+      attributes: {
+        title: post.title,
+        slug: post.slug,
+        excerpt: post.excerpt,
+        content: post.content,
+        category: post.category,
+        publishedAt: post.publishedAt,
+      }
+    }))
   }
 }
 
@@ -134,8 +146,22 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
     const data = await fetchAPI<BlogPost[]>(`/blog-posts?filters[slug][$eq]=${slug}&populate=*`)
     return data.data?.[0] || null
   } catch (error) {
-    // Return null if Strapi is not available
-    console.warn(`Failed to fetch blog post "${slug}" from Strapi:`, error)
+    // Fallback to mock data if Strapi is not available
+    console.warn(`Failed to fetch blog post "${slug}" from Strapi, checking mock data:`, error)
+    const mock = mockBlogPosts.find(post => post.slug === slug)
+    if (mock) {
+      return {
+        id: mock.id,
+        attributes: {
+          title: mock.title,
+          slug: mock.slug,
+          excerpt: mock.excerpt,
+          content: mock.content,
+          category: mock.category,
+          publishedAt: mock.publishedAt,
+        }
+      }
+    }
     return null
   }
 }
