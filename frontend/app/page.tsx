@@ -7,6 +7,7 @@ import Footer from '@/components/Footer'
 import BackgroundGradients from '@/components/BackgroundGradients'
 import ClientLogos from '@/components/ClientLogos'
 import { useEffect, useRef } from 'react'
+import CountUp from '@/components/CountUp'
 
 export default function HomePage() {
   const chartRef = useRef<HTMLCanvasElement>(null)
@@ -51,42 +52,40 @@ export default function HomePage() {
         const context = ctx.getContext('2d')
         if (!context) return
 
+        // Create gradient
+        const gradient = context.createLinearGradient(0, 0, 0, 400)
+        gradient.addColorStop(0, 'rgba(16, 185, 129, 0.2)')
+        gradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)')
+
         chartInstance = new Chart(ctx, {
           type: 'line',
           data: {
             labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
             datasets: [{
               label: 'Google Ads',
-              data: [2.8, 3.1, 3.0, 3.5, 3.9, 4.1, 3.8],
+              data: [2.8, 3.1, 3.0, 3.5, 3.9, 4.1, 4.4],
               borderColor: '#10B981',
-              backgroundColor: (context: any) => {
-                const chart = context.chart
-                const {ctx, chartArea} = chart
-                if (!chartArea) {
-                  return 'rgba(16, 185, 129, 0.4)'
-                }
-                const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top)
-                gradient.addColorStop(0, 'rgba(16, 185, 129, 0.0)')
-                gradient.addColorStop(0.5, 'rgba(16, 185, 129, 0.2)')
-                gradient.addColorStop(1, 'rgba(16, 185, 129, 0.4)')
-                return gradient
-              },
+              backgroundColor: gradient,
               borderWidth: 2,
               pointBackgroundColor: '#050505',
               pointBorderColor: '#10B981',
               pointBorderWidth: 2,
-              pointRadius: 4,
+              pointRadius: (ctx) => {
+                const index = ctx.dataIndex
+                const dataLength = ctx.chart.data.labels?.length || 0
+                return index === dataLength - 1 ? 6 : 4
+              },
               pointHoverBackgroundColor: '#10B981',
-              pointHoverRadius: 5,
+              pointHoverRadius: 6,
               fill: true,
               tension: 0.4
             },
             {
               label: 'Meta Ads',
-              data: [1.2, 1.5, 1.3, 1.8, 2.1, 2.5, 1.8],
-              borderColor: '#3B82F6',
-              borderWidth: 3,
-              borderDash: [12, 6],
+              data: [1.2, 1.5, 1.3, 1.8, 2.1, 2.5, 2.8],
+              borderColor: 'rgba(59, 130, 246, 0.5)',
+              borderWidth: 2,
+              borderDash: [5, 5],
               pointRadius: 0,
               pointHoverRadius: 0,
               fill: false,
@@ -96,6 +95,10 @@ export default function HomePage() {
           options: {
             responsive: true,
             maintainAspectRatio: false,
+            animation: {
+              duration: 2000,
+              easing: 'easeOutQuart'
+            },
             interaction: {
               mode: 'index',
               intersect: false,
@@ -112,7 +115,19 @@ export default function HomePage() {
                 borderWidth: 1,
                 padding: 12,
                 displayColors: true,
-                usePointStyle: true
+                usePointStyle: true,
+                callbacks: {
+                  label: function(context) {
+                    let label = context.dataset.label || '';
+                    if (label) {
+                      label += ': ';
+                    }
+                    if (context.parsed.y !== null) {
+                      label += context.parsed.y + 'x ROAS';
+                    }
+                    return label;
+                  }
+                }
               }
             },
             scales: {
@@ -124,7 +139,7 @@ export default function HomePage() {
                   display: false
                 },
                 ticks: {
-                  color: 'rgba(255,255,255,0.3)',
+                  color: 'rgba(255,255,255,0.4)',
                   font: {
                     family: "'JetBrains Mono', monospace",
                     size: 10
@@ -132,14 +147,17 @@ export default function HomePage() {
                 }
               },
               y: {
-                min: 1.0,
-                max: 4.5,
+                min: 0,
+                max: 5,
                 ticks: {
-                  stepSize: 0.5,
-                  color: 'rgba(255,255,255,0.3)',
+                  stepSize: 1,
+                  color: 'rgba(255,255,255,0.4)',
                   font: {
                     family: "'JetBrains Mono', monospace",
                     size: 10
+                  },
+                  callback: function(value) {
+                    return value + 'x';
                   }
                 },
                 grid: {
@@ -197,7 +215,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row items-center gap-4">
                 <Link 
                   href="#methodology" 
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-full transition-all duration-200 shadow-lg shadow-emerald-500/20"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-full transition-all duration-200 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)]"
                 >
                   Explore the Methodology
                   <ChevronDown className="w-4 h-4" />
@@ -238,24 +256,30 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-4 mb-8">
+                  <div className="grid grid-cols-3 gap-4 mb-8">
                   <div className="p-4 rounded-xl bg-white/5 border border-white/5">
                     <p className="text-xs text-white/40 mb-1">Total Revenue</p>
-                    <p className="text-2xl font-mono text-white">$4.2M</p>
+                    <p className="text-2xl font-mono text-white">
+                      <CountUp end={4.2} prefix="$" suffix="M" decimals={1} />
+                    </p>
                     <span className="text-xs text-emerald-400 flex items-center gap-1 mt-1">
                       <TrendingUp className="w-3 h-3" /> +24%
                     </span>
                   </div>
                   <div className="p-4 rounded-xl bg-white/5 border border-white/5">
                     <p className="text-xs text-white/40 mb-1">Blended ROAS</p>
-                    <p className="text-2xl font-mono text-white">3.8x</p>
+                    <p className="text-2xl font-mono text-white">
+                      <CountUp end={3.8} suffix="x" decimals={1} />
+                    </p>
                     <span className="text-xs text-emerald-400 flex items-center gap-1 mt-1">
                       <TrendingUp className="w-3 h-3" /> +0.4
                     </span>
                   </div>
                   <div className="p-4 rounded-xl bg-white/5 border border-white/5">
                     <p className="text-xs text-white/40 mb-1">CPA</p>
-                    <p className="text-2xl font-mono text-white">$42.10</p>
+                    <p className="text-2xl font-mono text-white">
+                       <CountUp end={42.10} prefix="$" decimals={2} />
+                    </p>
                     <span className="text-xs text-emerald-400 flex items-center gap-1 mt-1">
                       <ArrowDownRight className="w-3 h-3" /> -12%
                     </span>
@@ -286,7 +310,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="absolute -right-4 top-10 p-4 glass-panel rounded-xl animate-[float_6s_ease-in-out_infinite] hidden xl:block max-w-[240px]">
+              <div className="absolute -right-4 bottom-28 p-4 glass-panel rounded-xl animate-[float_6s_ease-in-out_infinite] hidden xl:block max-w-[240px]">
                 <div className="flex items-start gap-3">
                   <div className="p-2 rounded-lg bg-emerald-500/20 text-emerald-400">
                     <Zap className="w-4 h-4" />
@@ -513,9 +537,9 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="relative rounded-3xl bg-[#0F0F0F] border border-emerald-500/30 p-8 shadow-2xl shadow-emerald-900/10 scale-105 z-10">
-              <div className="absolute inset-0 bg-emerald-500/5 rounded-3xl pointer-events-none"></div>
-              <div className="absolute top-0 right-0 left-0 h-1 bg-gradient-to-r from-[#ffcc33] to-[#520063] rounded-t-3xl"></div>
+            <div className="relative rounded-[32px] overflow-hidden bg-[#0F0F0F] border border-emerald-500/30 p-8 shadow-2xl shadow-emerald-900/10 scale-105 z-10">
+              <div className="absolute inset-0 bg-emerald-500/5 rounded-[32px] pointer-events-none"></div>
+              <div className="absolute top-0 right-0 left-0 h-1.5 bg-gradient-to-r from-[#ffcc33] to-[#520063]"></div>
               
               <div className="mb-8 relative">
                 <span className="inline-block px-3 py-1 rounded-full bg-emerald-500/20 text-xs text-emerald-400 mb-4 border border-emerald-500/20">Most Common</span>

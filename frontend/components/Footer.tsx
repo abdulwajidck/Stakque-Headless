@@ -23,19 +23,19 @@ export default function Footer() {
             <div className="flex gap-4">
               <a 
                 href="#" 
-                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-all"
+                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-colors duration-200"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
               <a 
                 href="#" 
-                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-all"
+                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-colors duration-200"
               >
                 <Twitter className="w-4 h-4" />
               </a>
               <a 
                 href="#" 
-                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-all"
+                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-colors duration-200"
               >
                 <Github className="w-4 h-4" />
               </a>
@@ -46,22 +46,22 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-6">Methodology</h4>
             <ul className="space-y-4 text-sm text-white/50">
               <li>
-                <Link href="/#methodology" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
+                <Link href="/#methodology" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-colors duration-200">
                   Embedded Teams
                 </Link>
               </li>
               <li>
-                <Link href="/#methodology" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
+                <Link href="/#methodology" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-colors duration-200">
                   Essential Metrics
                 </Link>
               </li>
               <li>
-                <Link href="/#methodology" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
+                <Link href="/#methodology" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-colors duration-200">
                   Engineered Growth
                 </Link>
               </li>
               <li>
-                <Link href="/performance-audit" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
+                <Link href="/performance-audit" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-colors duration-200">
                   Performance Audit
                 </Link>
               </li>
@@ -72,37 +72,37 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-6">Company</h4>
             <ul className="space-y-4 text-sm text-white/50">
               <li>
-                <Link href="/about" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
+                <Link href="/about" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-colors duration-200">
                   About Stakque
                 </Link>
               </li>
               <li>
-                <Link href="/manifesto" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
+                <Link href="/manifesto" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-colors duration-200">
                   Our Manifesto
                 </Link>
               </li>
               <li>
-                <Link href="/case-studies" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
+                <Link href="/case-studies" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-colors duration-200">
                   Case Studies
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
+                <Link href="/blog" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-colors duration-200">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/legacy-services" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
+                <Link href="/legacy-services" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-colors duration-200">
                   Legacy Services
                 </Link>
               </li>
               <li>
-                <Link href="/open-positions" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
+                <Link href="/open-positions" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-colors duration-200">
                   Careers
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-all duration-300 ease-in-out">
+                <Link href="/contact" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-colors duration-200">
                   Contact
                 </Link>
               </li>
@@ -113,8 +113,8 @@ export default function Footer() {
         <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-white/30">
           <p>© 2025 Stakque Performance Agency. All rights reserved.</p>
           <div className="flex gap-6 mt-4 sm:mt-0">
-            <Link href="/privacy-policy" className="hover:text-white active:text-white/80 transition-all duration-300 ease-in-out">Privacy Policy</Link>
-            <Link href="/terms-conditions" className="hover:text-white active:text-white/80 transition-all duration-300 ease-in-out">Terms of Service</Link>
+            <Link href="/privacy-policy" className="hover:text-white active:text-white/80 transition-colors duration-200">Privacy Policy</Link>
+            <Link href="/terms-conditions" className="hover:text-white active:text-white/80 transition-colors duration-200">Terms of Service</Link>
           </div>
         </div>
       </div>
