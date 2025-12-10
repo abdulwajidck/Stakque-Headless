@@ -6,7 +6,7 @@ module.exports = {
   /**
    * The WordPress source URL.
    */
-  sourceUrl: "http://headless.stakque.site",
+  sourceUrl: "https://headless.stakque.site",
 
   /**
    * Whether to use the HeadstartWP WordPress plugin.
