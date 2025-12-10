@@ -66,13 +66,13 @@ export default function EngagementPage() {
               <div className="mb-8 relative">
                 <span className="inline-block px-3 py-1 rounded-full bg-emerald-500/20 text-xs text-emerald-400 mb-4 border border-emerald-500/20">Most Common</span>
                 <h3 className="text-2xl font-semibold text-white mb-2">Growth Partner</h3>
-                <p className="text-sm text-white/50">Full E3 implementation. Monthly retainer + performance incentive.</p>
+                <p className="text-sm text-white/50">Full Integrated implementation. Monthly retainer + performance incentive.</p>
               </div>
               
               <ul className="space-y-4 mb-8 relative">
                 <li className="flex items-start gap-3 text-sm text-white">
                   <CheckCircle className="w-5 h-5 text-emerald-400 shrink-0" />
-                  <strong>Embedded</strong> Team Structure
+                  <strong>Unified</strong> Team Structure
                 </li>
                 <li className="flex items-start gap-3 text-sm text-white">
                   <CheckCircle className="w-5 h-5 text-emerald-400 shrink-0" />

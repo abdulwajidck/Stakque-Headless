@@ -141,7 +141,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                     </div>
                     <div>
                       <h3 className="text-2xl font-manrope font-semibold text-white">Our Approach</h3>
-                      <p className="text-sm text-white/50 mt-1">E3 Implementation</p>
+                      <p className="text-sm text-white/50 mt-1">Integrated Implementation</p>
                     </div>
                   </div>
                   <div 

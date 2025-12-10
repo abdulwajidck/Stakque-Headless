@@ -111,7 +111,7 @@ export default function OpenPositionsPage() {
                       </li>
                     ))}
                   </ul>
-                  <Link href="/contact" className={`inline-flex items-center gap-2 text-sm font-medium ${colorClasses[position.color as keyof typeof colorClasses].split(' ')[2]} hover:opacity-80 transition-colors`}>
+                  <Link href="/upload-resume" className={`inline-flex items-center gap-2 text-sm font-medium ${colorClasses[position.color as keyof typeof colorClasses].split(' ')[2]} hover:opacity-80 transition-colors`}>
                     Apply Now
                     <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -163,7 +163,7 @@ export default function OpenPositionsPage() {
           <p className="text-xl text-white/60 mb-10 font-light">
             We're always looking for exceptional talent. Send us your resume and tell us how you'd contribute.
           </p>
-          <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-black font-semibold rounded-full transition-all duration-200 hover:bg-gray-100">
+          <Link href="/upload-resume" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-black font-semibold rounded-full transition-all duration-200 hover:bg-gray-100">
             Get in Touch
             <ArrowRight className="w-4 h-4" />
           </Link>

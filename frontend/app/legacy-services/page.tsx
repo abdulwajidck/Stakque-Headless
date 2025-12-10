@@ -75,7 +75,7 @@ export default function LegacyServicesPage() {
             </h1>
 
             <p className="text-lg lg:text-xl text-white/60 mb-12 leading-relaxed max-w-2xl mx-auto font-light">
-              While we specialize in integrated E3 performance marketing, we also offer standalone services for businesses looking for specific solutions. Explore our individual service offerings below.
+              While we specialize in Integrated performance marketing, we also offer standalone services for businesses looking for specific solutions. Explore our individual service offerings below.
             </p>
           </div>
         </div>
@@ -137,11 +137,11 @@ export default function LegacyServicesPage() {
             Looking for Integrated Solutions?
           </h2>
           <p className="text-xl text-white/60 mb-10 font-light">
-            Our E3 Model combines multiple services into a unified performance marketing system. Explore our comprehensive approach.
+            Our Integrated Model combines multiple services into a unified performance marketing system. Explore our comprehensive approach.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/solutions" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-black font-semibold rounded-full transition-all duration-200 hover:bg-gray-100">
-              View E3 Solutions
+              View Integrated Solutions
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link href="/book-consultation" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border border-white/10 text-white font-semibold rounded-full transition-all duration-200 hover:bg-white/5">

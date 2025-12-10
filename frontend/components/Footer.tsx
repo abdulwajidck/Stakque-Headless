@@ -18,7 +18,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-white/50 text-sm max-w-sm leading-relaxed mb-8">
-              Pioneering the E3 performance model. We blend technical engineering with creative strategy to drive essential growth for forward-thinking brands.
+              Pioneering the Integrated performance model. We blend technical engineering with creative strategy to drive essential growth for forward-thinking brands.
             </p>
             <div className="flex gap-4">
               <a 
@@ -46,18 +46,18 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-6">Methodology</h4>
             <ul className="space-y-4 text-sm text-white/50">
               <li>
-                <Link href="/#methodology" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-colors duration-200">
-                  Embedded Teams
+                <Link href="/#methodology" className="text-white/60 hover:text-emerald-400 transition-colors">
+                  Unified Teams
                 </Link>
               </li>
               <li>
-                <Link href="/#methodology" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-colors duration-200">
-                  Essential Metrics
+                <Link href="/#methodology" className="text-white/60 hover:text-emerald-400 transition-colors">
+                  Strategic Metrics
                 </Link>
               </li>
               <li>
-                <Link href="/#methodology" className="hover:text-[#ffcc33] active:text-[#ffcc33]/80 transition-colors duration-200">
-                  Engineered Growth
+                <Link href="/#methodology" className="text-white/60 hover:text-emerald-400 transition-colors">
+                  Technical Execution
                 </Link>
               </li>
               <li>

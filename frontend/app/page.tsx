@@ -203,14 +203,13 @@ export default function HomePage() {
               </div>
 
               <h1 className="text-5xl lg:text-7xl font-manrope font-semibold tracking-tight text-white mb-6 leading-[1.1]">
-                The <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffcc33] to-[#520063]">E3 Model</span> for <br />
+                The <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffcc33] to-[#520063]">Integrated Model</span> for <br />
                 Scalable Growth.
           </h1>
 
               <p className="text-lg text-white/60 mb-10 leading-relaxed max-w-xl font-light">
-                Stakque isn't just an agency. We are an Engineered performance partner.
-                <span className="text-white/90"> Embedded</span> in your team, focusing on the <span className="text-white/90">Essential</span> metrics, driving results through <span className="text-white/90">Engineered</span> systems.
-              </p>
+    <span className="text-white/90"> Unified</span> with your team, focusing on the <span className="text-white/90">Strategic</span> metrics, driving results through <span className="text-white/90">Technical</span> systems.
+  </p>
 
               <div className="flex flex-col sm:flex-row items-center gap-4">
                 <Link 
@@ -331,7 +330,7 @@ export default function HomePage() {
         <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
           <div className="mb-20">
             <h2 className="text-4xl lg:text-5xl font-manrope font-semibold tracking-tight text-white mb-6">
-              The <span className="text-emerald-400">E3</span> Model.
+              The <span className="text-emerald-400">Integrated</span> Model.
             </h2>
             <p className="text-xl text-white/60 max-w-2xl font-light">
               Traditional agencies stay on the outside. Stakque is different. Our proprietary framework ensures alignment, focus, and systematic execution.
@@ -339,24 +338,17 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* E1: Embedded */}
+            {/* Unified */}
             <div className="group relative p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent hover:from-emerald-500/50 hover:to-transparent transition-all duration-500">
-              <div className="relative h-full bg-[#0A0A0A] rounded-[14px] p-8 border border-white/5 overflow-hidden">
-                <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition-opacity duration-500">
-                  <Users className="w-24 h-24 text-emerald-500/20 -mr-8 -mt-8" />
+              <div className="absolute inset-0 bg-black/50 rounded-2xl border border-white/5 group-hover:border-emerald-500/50 transition-colors"></div>
+              <div className="relative p-8 h-full">
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                  <span className="text-xl font-bold text-emerald-400">U</span>
                 </div>
-                
-                <div className="w-12 h-12 rounded-lg bg-emerald-900/30 flex items-center justify-center border border-emerald-500/30 mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Merge className="w-6 h-6 text-emerald-400" />
-                </div>
-                
-                <h3 className="text-2xl font-manrope font-semibold text-white mb-2">Embedded</h3>
-                <p className="text-sm font-mono text-emerald-500 mb-6 tracking-wide uppercase">Total Integration</p>
-                
-                <p className="text-white/60 leading-relaxed">
-                  We don't function as a vendor. We operate as a tactical extension of your growth team. Shared Slack channels, weekly sprints, and deep cultural alignment mean zero friction and maximum speed.
-                </p>
-                
+                <h3 className="text-2xl font-semibold text-white mb-4">Unified Teams</h3>
+                <p className="text-white/60 leading-relaxed mb-6">
+                  We don't function as a vendor. We operate as a tactical extension of your growth team. Shared Slack channels, weekly sprints, and total transparency.
+                </p>        
                 <div className="mt-8 pt-8 border-t border-white/5 flex flex-col gap-3">
                   <div className="flex items-center gap-2 text-sm text-white/80">
                     <Check className="w-4 h-4 text-emerald-500" />
@@ -370,24 +362,17 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* E2: Essential */}
+            {/* Strategic */}
             <div className="group relative p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent hover:from-blue-500/50 hover:to-transparent transition-all duration-500">
-              <div className="relative h-full bg-[#0A0A0A] rounded-[14px] p-8 border border-white/5 overflow-hidden">
-                <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition-opacity duration-500">
-                  <Target className="w-24 h-24 text-blue-500/20 -mr-8 -mt-8" />
+              <div className="absolute inset-0 bg-black/50 rounded-2xl border border-white/5 group-hover:border-blue-500/50 transition-colors"></div>
+              <div className="relative p-8 h-full">
+                <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                  <span className="text-xl font-bold text-blue-400">S</span>
                 </div>
-
-                <div className="w-12 h-12 rounded-lg bg-blue-900/30 flex items-center justify-center border border-blue-500/30 mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Focus className="w-6 h-6 text-blue-400" />
-                </div>
-                
-                <h3 className="text-2xl font-manrope font-semibold text-white mb-2">Essential</h3>
-                <p className="text-sm font-mono text-blue-500 mb-6 tracking-wide uppercase">Radical Focus</p>
-                
-                <p className="text-white/60 leading-relaxed">
+                <h3 className="text-2xl font-semibold text-white mb-4">Strategic Focus</h3>
+                <p className="text-white/60 leading-relaxed mb-6">
                   Vanity metrics die here. We strip away the noise to focus purely on the essential levers that drive Net Revenue and Contribution Margin. If it doesn't impact the bottom line, we don't track it.
                 </p>
-                
                 <div className="mt-8 pt-8 border-t border-white/5 flex flex-col gap-3">
                   <div className="flex items-center gap-2 text-sm text-white/80">
                     <Check className="w-4 h-4 text-blue-500" />
@@ -401,24 +386,17 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* E3: Engineered */}
+            {/* Technical */}
             <div className="group relative p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent hover:from-purple-500/50 hover:to-transparent transition-all duration-500">
-              <div className="relative h-full bg-[#0A0A0A] rounded-[14px] p-8 border border-white/5 overflow-hidden">
-                <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition-opacity duration-500">
-                  <Cpu className="w-24 h-24 text-purple-500/20 -mr-8 -mt-8" />
+              <div className="absolute inset-0 bg-black/50 rounded-2xl border border-white/5 group-hover:border-purple-500/50 transition-colors"></div>
+              <div className="relative p-8 h-full">
+                <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                  <span className="text-xl font-bold text-purple-400">T</span>
                 </div>
-
-                <div className="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center border border-purple-500/30 mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Code2 className="w-6 h-6 text-purple-400" />
-                </div>
-                
-                <h3 className="text-2xl font-manrope font-semibold text-white mb-2">Engineered</h3>
-                <p className="text-sm font-mono text-purple-500 mb-6 tracking-wide uppercase">Systematic Scale</p>
-                
-                <p className="text-white/60 leading-relaxed">
+                <h3 className="text-2xl font-semibold text-white mb-4">Technical Execution</h3>
+                <p className="text-white/60 leading-relaxed mb-6">
                   Growth is a science, not art. We leverage Python-based bid scripting, server-side tracking, and custom data lakes to engineer advantages that manual media buying simply cannot compete with.
                 </p>
-                
                 <div className="mt-8 pt-8 border-t border-white/5 flex flex-col gap-3">
                   <div className="flex items-center gap-2 text-sm text-white/80">
                     <Check className="w-4 h-4 text-purple-500" />
@@ -467,7 +445,7 @@ export default function HomePage() {
                 <Quote className="w-8 h-8" />
               </div>
               <p className="text-lg text-white/80 leading-relaxed font-light mb-8">
-                &quot;Stakque's Embedded model changed everything. They aren't an agency; they are the most technical members of our marketing team. The CPA reduction was immediate.&quot;
+                &quot;Stakque's Unified model changed everything. They aren't an agency; they are the most technical members of our marketing team. The CPA reduction was immediate.&quot;
               </p>
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-xs font-semibold">JD</div>
@@ -483,7 +461,7 @@ export default function HomePage() {
                 <Quote className="w-8 h-8" />
               </div>
               <p className="text-lg text-white/80 leading-relaxed font-light mb-8">
-                &quot;The engineering approach to creative testing and bid management allowed us to scale spend by 4x while maintaining our efficiency targets. Pure science.&quot;
+                &quot;The technical approach to creative testing and bid management allowed us to scale spend by 4x while maintaining our efficiency targets. Pure science.&quot;
               </p>
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-xs font-semibold">ES</div>
@@ -544,13 +522,12 @@ export default function HomePage() {
               <div className="mb-8 relative">
                 <span className="inline-block px-3 py-1 rounded-full bg-emerald-500/20 text-xs text-emerald-400 mb-4 border border-emerald-500/20">Most Common</span>
                 <h3 className="text-2xl font-semibold text-white mb-2">Growth Partner</h3>
-                <p className="text-sm text-white/50">Full E3 implementation. Monthly retainer + performance incentive.</p>
+                <p className="text-sm text-white/50">Full Integrated implementation. Monthly retainer + performance incentive.</p>
               </div>
               
               <ul className="space-y-4 mb-8 relative">
                 <li className="flex items-start gap-3 text-sm text-white">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                  <strong>Embedded</strong> Team Structure
+                  <strong>Unified</strong> Team Structure
                 </li>
                 <li className="flex items-start gap-3 text-sm text-white">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />

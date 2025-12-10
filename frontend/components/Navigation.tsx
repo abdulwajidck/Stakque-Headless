@@ -23,7 +23,7 @@ export default function Navigation() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             <Link href="/#methodology" className="text-sm text-white/60 hover:text-white active:text-white/80 transition-all duration-300 ease-in-out font-medium">
-              The E3 Model
+              The Integrated Model
             </Link>
             <Link href="/solutions" className="text-sm text-white/60 hover:text-white active:text-white/80 transition-all duration-300 ease-in-out font-medium">
               Solutions

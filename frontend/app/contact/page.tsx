@@ -41,7 +41,7 @@ export default function ContactPage() {
             </h1>
 
             <p className="text-lg lg:text-xl text-white/60 mb-12 leading-relaxed max-w-2xl mx-auto font-light">
-              Whether you're looking to optimize existing campaigns or build a new performance engine from scratch, we're here to help. Let's discuss how the E3 model can transform your marketing.
+              Whether you're looking to optimize existing campaigns or build a new performance engine from scratch, we're here to help. Let's discuss how the Integrated model can transform your marketing.
             </p>
           </div>
         </div>
@@ -151,7 +151,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-2">Email Us</h3>
-                    <a href="mailto:hello@stakque.com" className="text-emerald-400 hover:text-emerald-300 transition-colors font-mono text-sm">hello@stakque.com</a>
+                    <a href="mailto:mail@stakque.com" className="text-emerald-400 hover:text-emerald-300 transition-colors font-mono text-sm">mail@stakque.com</a>
                     <p className="text-white/50 text-sm mt-1">We typically respond within 24 hours</p>
                   </div>
                 </div>
@@ -164,8 +164,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-2">Call Us</h3>
-                    <a href="tel:+14155551234" className="text-blue-400 hover:text-blue-300 transition-colors font-mono text-sm">+1 (415) 555-1234</a>
-                    <p className="text-white/50 text-sm mt-1">Mon-Fri, 9am-6pm PST</p>
+                    <a href="tel:+919061085417" className="text-blue-400 hover:text-blue-300 transition-colors font-mono text-sm">+91 9061085417</a>
+                    <p className="text-white/50 text-sm mt-1">Mon-Fri, 9am-6pm IST</p>
                   </div>
                 </div>
               </div>
@@ -178,8 +178,8 @@ export default function ContactPage() {
                       <MapPin className="w-5 h-5 text-emerald-400" />
                     </div>
                     <div>
-                      <h4 className="text-white font-medium mb-1">San Francisco</h4>
-                      <p className="text-white/50 text-sm">123 Market Street, Suite 400<br />San Francisco, CA 94105</p>
+                      <h4 className="text-white font-medium mb-1">Mumbai</h4>
+                      <p className="text-white/50 text-sm">Level 4 Dynasty, A Wing, Andheri-Kurla Road<br />Mumbai, Maharashtra 400059</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -187,22 +187,13 @@ export default function ContactPage() {
                       <MapPin className="w-5 h-5 text-blue-400" />
                     </div>
                     <div>
-                      <h4 className="text-white font-medium mb-1">New York</h4>
-                      <p className="text-white/50 text-sm">456 Broadway, Floor 12<br />New York, NY 10013</p>
+                      <h4 className="text-white font-medium mb-1">Mangalore</h4>
+                      <p className="text-white/50 text-sm">F5, Udbhav Square, Kottara Chowki<br />Mangalore, KA</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-                      <MapPin className="w-5 h-5 text-purple-400" />
-                    </div>
-                    <div>
-                      <h4 className="text-white font-medium mb-1">London</h4>
-                      <p className="text-white/50 text-sm">789 King's Road<br />London, UK SW3 4RD</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-                      <Globe className="w-5 h-5 text-orange-400" />
+                      <Globe className="w-5 h-5 text-purple-400" />
                     </div>
                     <div>
                       <h4 className="text-white font-medium mb-1">Remote</h4>
@@ -241,7 +232,7 @@ export default function ContactPage() {
               Schedule a Call
             </Link>
             <Link href="/#methodology" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border border-white/10 text-white font-semibold rounded-full transition-all duration-200 hover:bg-white/5">
-              Learn More About E3
+              Learn More About Integrated
             </Link>
           </div>
         </div>

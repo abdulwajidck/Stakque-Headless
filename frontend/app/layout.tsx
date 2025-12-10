@@ -5,8 +5,8 @@ import "./globals.css";
 // Font configurations removed in favor of Fontshare CDN
 
 export const metadata: Metadata = {
-  title: "Stakque | The E3 Performance Marketing Agency",
-  description: "Pioneering the E3 performance model. We blend technical engineering with creative strategy to drive essential growth for forward-thinking brands.",
+  title: "Stakque | The Integrated Performance Marketing Agency",
+  description: "Pioneering the Integrated performance model. We blend technical engineering with creative strategy to drive essential growth for forward-thinking brands.",
   other: {
     "preload": "/logo.svg",
   },

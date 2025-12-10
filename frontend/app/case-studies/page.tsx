@@ -108,7 +108,7 @@ export default async function CaseStudiesPage() {
                       </div>
                       <div>
                         <h3 className="text-xl font-semibold text-white">Our Approach</h3>
-                        <p className="text-sm text-white/50">E3 Implementation</p>
+                        <p className="text-sm text-white/50">Integrated Implementation</p>
                       </div>
                     </div>
                     <div 
