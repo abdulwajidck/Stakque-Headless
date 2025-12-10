@@ -121,81 +121,73 @@ export async function fetchAPI<T>(path: string, options: RequestInit = {}): Prom
 import { mockBlogPosts } from './mockBlogPosts'
 import { cleanHtmlContent } from './cleanHtml'
 
+// Helper to map WordPress API response to existing BlogPost interface
+function mapWordPressPostToStrapi(wpPost: any): BlogPost {
+  const featuredMedia = wpPost._embedded?.['wp:featuredmedia']?.[0];
+  const categories = wpPost._embedded?.['wp:term']?.[0];
+  const categoryName = categories && categories.length > 0 ? categories[0].name : undefined;
+
+  return {
+    id: wpPost.id,
+    attributes: {
+      title: wpPost.title.rendered,
+      slug: wpPost.slug,
+      excerpt: wpPost.excerpt.rendered,
+      content: cleanHtmlContent(wpPost.content.rendered),
+      category: categoryName,
+      publishedAt: wpPost.date,
+      featuredImage: featuredMedia ? {
+        data: {
+          attributes: {
+            url: featuredMedia.source_url,
+            width: featuredMedia.media_details?.width || 800,
+            height: featuredMedia.media_details?.height || 600
+          }
+        }
+      } : undefined
+    }
+  };
+}
+
 export async function getBlogPosts(): Promise<BlogPost[]> {
   try {
-    const data = await fetchAPI<BlogPost[]>('/blog-posts?populate=*&sort=publishedAt:desc')
-    return data.data || []
-  } catch (error: any) {
-    // Graceful fallback for connection errors
-    if (error.cause?.code === 'ECONNREFUSED' || error.message.includes('fetch failed')) {
-      // console.log('Strapi unreachable, using mock blog posts.')
-      return mockBlogPosts.map(post => ({
-        id: post.id,
-        attributes: {
-          title: post.title,
-          slug: post.slug,
-          excerpt: post.excerpt,
-          content: cleanHtmlContent(post.content),
-          category: post.category?.replace(/&amp;/g, '&') || undefined,
-          publishedAt: post.publishedAt,
-        }
-      }))
+    // Fetch from WordPress API with embedded media and terms
+    const res = await fetch('https://headless.stakque.site/wp-json/wp/v2/posts?_embed&per_page=100', {
+       next: { revalidate: 60 }
+    });
+    
+    if (!res.ok) {
+      throw new Error(`Failed to fetch posts: ${res.statusText}`);
     }
-    console.warn('Failed to fetch blog posts from Strapi, using mock data:', error)
-    return mockBlogPosts.map(post => ({
-      id: post.id,
-      attributes: {
-        title: post.title,
-        slug: post.slug,
-        excerpt: post.excerpt,
-        content: cleanHtmlContent(post.content),
-        category: post.category?.replace(/&amp;/g, '&') || undefined,
-        publishedAt: post.publishedAt,
-      }
-    }))
+
+    const data = await res.json();
+    return data.map(mapWordPressPostToStrapi);
+  } catch (error: any) {
+    console.warn('Failed to fetch blog posts from WordPress:', error);
+    // Fallback to empty array or keep mock if desired, but user wants real data.
+    // Returning empty array to avoid confusion with mock data.
+    return []; 
   }
 }
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   try {
-    const data = await fetchAPI<BlogPost[]>(`/blog-posts?filters[slug][$eq]=${slug}&populate=*`)
-    return data.data?.[0] || null
-  } catch (error: any) {
-    // Graceful fallback
-    if (error.cause?.code === 'ECONNREFUSED' || error.message.includes('fetch failed')) {
-      const mock = mockBlogPosts.find(post => post.slug === slug)
-      if (mock) {
-        return {
-          id: mock.id,
-          attributes: {
-            title: mock.title,
-            slug: mock.slug,
-            excerpt: mock.excerpt,
-            content: cleanHtmlContent(mock.content),
-            category: mock.category?.replace(/&amp;/g, '&') || undefined,
-            publishedAt: mock.publishedAt,
-          }
-        }
-      }
-      return null
+    const res = await fetch(`https://headless.stakque.site/wp-json/wp/v2/posts?slug=${slug}&_embed`, {
+       next: { revalidate: 60 }
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch post: ${res.statusText}`);
     }
 
-    console.warn(`Failed to fetch blog post "${slug}" from Strapi, checking mock data:`, error)
-    const mock = mockBlogPosts.find(post => post.slug === slug)
-    if (mock) {
-      return {
-        id: mock.id,
-        attributes: {
-          title: mock.title,
-          slug: mock.slug,
-          excerpt: mock.excerpt,
-          content: cleanHtmlContent(mock.content),
-          category: mock.category?.replace(/&amp;/g, '&') || undefined,
-          publishedAt: mock.publishedAt,
-        }
-      }
+    const data = await res.json();
+    if (data && data.length > 0) {
+      return mapWordPressPostToStrapi(data[0]);
     }
-    return null
+    return null;
+  } catch (error: any) {
+    console.warn(`Failed to fetch blog post "${slug}" from WordPress:`, error);
+    return null;
   }
 }
 
