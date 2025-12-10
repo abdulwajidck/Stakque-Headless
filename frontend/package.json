@@ -11,6 +11,8 @@
     "test:ui": "playwright test --ui"
   },
   "dependencies": {
+    "@headstartwp/core": "^1.6.0",
+    "@headstartwp/next": "^1.5.1",
     "chart.js": "^4.5.1",
     "critters": "^0.0.23",
     "framer-motion": "^12.23.25",

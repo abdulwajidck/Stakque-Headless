@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
         pathname: '/uploads/**',
       },
       {
+        protocol: 'http',
+        hostname: 'headless.stakque.site',
+        pathname: '/**',
+      },
+      {
         protocol: 'https',
         hostname: '**.amazonaws.com',
         pathname: '/**',
