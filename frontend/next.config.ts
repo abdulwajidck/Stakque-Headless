@@ -37,6 +37,8 @@ const nextConfig: NextConfig = {
   },
   // Compress output
   compress: true,
+  // Standalone build for smaller deployment
+  output: 'standalone',
 };
 
 export default nextConfig;

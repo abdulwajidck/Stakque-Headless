@@ -52,3 +52,6 @@ next-env.d.ts
 *.html
 !frontend/public/**/*.html
 
+
+# Local Netlify folder
+.netlify
