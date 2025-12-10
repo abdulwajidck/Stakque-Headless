@@ -30,6 +30,21 @@ export function cleanHtmlContent(html: string): string {
   // Clean up any remaining empty tags
   cleaned = cleaned.replace(/<(\w+)[^>]*>\s*<\/\1>/g, '')
 
+  // Decode HTML entities
+  cleaned = cleaned.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));/g, (_, n) => {
+    if (n.charAt(0) === "#") {
+        return n.charAt(1) === "x"
+            ? String.fromCharCode(parseInt(n.substring(2), 16))
+            : String.fromCharCode(+n.substring(1));
+    }
+    const entities: Record<string, string> = {
+      amp: '&', apos: '\'', 'lt': '<', 'gt': '>', quot: '"', nbsp: ' ',
+      // specific fixes
+      '#8217': '\'', '#8220': '"', '#8221': '"', '#8211': '-', '#8212': '--'
+    };
+    return entities[n] || _;
+  });
+
   return cleaned.trim()
 }
 

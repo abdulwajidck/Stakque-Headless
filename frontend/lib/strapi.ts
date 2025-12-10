@@ -127,16 +127,19 @@ function mapWordPressPostToStrapi(wpPost: any): BlogPost {
   const categories = wpPost._embedded?.['wp:term']?.[0];
   const categoryName = categories && categories.length > 0 ? categories[0].name : undefined;
 
+  // Ensure image has a valid source URL before returning it
+  const hasValidImage = featuredMedia && featuredMedia.source_url;
+
   return {
     id: wpPost.id,
     attributes: {
       title: wpPost.title.rendered,
       slug: wpPost.slug,
-      excerpt: wpPost.excerpt.rendered,
+      excerpt: cleanHtmlContent(wpPost.excerpt.rendered),
       content: cleanHtmlContent(wpPost.content.rendered),
       category: categoryName,
       publishedAt: wpPost.date,
-      featuredImage: featuredMedia ? {
+      featuredImage: hasValidImage ? {
         data: {
           attributes: {
             url: featuredMedia.source_url,
@@ -251,3 +254,65 @@ export async function getLocation(slug: string): Promise<Location | null> {
   }
 }
 
+
+// Pages
+export interface Page {
+  id: number;
+  attributes: {
+    title: string;
+    slug: string;
+    content: string;
+    featuredImage?: {
+      data: {
+        attributes: {
+          url: string;
+          width: number;
+          height: number;
+        }
+      }
+    };
+  }
+}
+
+function mapWordPressPageToStrapi(wpPage: any): Page {
+  const featuredMedia = wpPage._embedded?.['wp:featuredmedia']?.[0];
+
+  return {
+    id: wpPage.id,
+    attributes: {
+      title: wpPage.title.rendered,
+      slug: wpPage.slug,
+      content: cleanHtmlContent(wpPage.content.rendered),
+      featuredImage: featuredMedia && featuredMedia.source_url ? {
+        data: {
+          attributes: {
+            url: featuredMedia.source_url,
+            width: featuredMedia.media_details?.width || 800,
+            height: featuredMedia.media_details?.height || 600
+          }
+        }
+      } : undefined
+    }
+  };
+}
+
+export async function getPage(slug: string): Promise<Page | null> {
+  try {
+    const res = await fetch(`https://headless.stakque.site/wp-json/wp/v2/pages?slug=${slug}&_embed`, {
+       next: { revalidate: 60 }
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch page: ${res.statusText}`);
+    }
+
+    const data = await res.json();
+    if (data && data.length > 0) {
+      return mapWordPressPageToStrapi(data[0]);
+    }
+    return null;
+  } catch (error: any) {
+    console.warn(`Failed to fetch page "${slug}" from WordPress:`, error);
+    return null;
+  }
+}
